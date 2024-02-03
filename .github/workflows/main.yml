@@ -29,5 +29,5 @@ jobs:
                 IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
                 IG_USER_ID: ${{ secrets.IG_USER_ID }}
                 IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
-                UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+                UNSPLASH_ACCESS_TOKEN: ${{ secrets.UNSPLASH_ACCESS_TOKEN }}
     
