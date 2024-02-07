@@ -8,14 +8,23 @@ from datetime import datetime, timedelta
 from unicodedata import normalize
 
 def main():
-    author = image_handler()
-    
-    caption = f"On Monday it will be week {calculate_week_no()} at THS. The image is by {author} on Unsplash."
-    
-    image_url = upload_to_imgbb("img.png")
-    
-    image_ID = create_instagram_container(image_url, caption)
-    post_instagram_container(image_ID) 
+    now = datetime.now()
+    then = now + timedelta(days = 3)
+    then = then.strftime("%d-%m-%y")
+    with open("./weeks.json", "r") as f:
+        weekdict = json.load(f)
+
+    if then not in weekdict:
+        exit()
+    else:
+        author = image_handler()
+        
+        caption = f"On Monday it will be week {calculate_week_no()} at THS. The image is by {author} on Unsplash."
+        
+        image_url = upload_to_imgbb("img.png")
+        
+        image_ID = create_instagram_container(image_url, caption)
+        post_instagram_container(image_ID) 
     
 #Get the image from unsplash and download it
 def image_handler():
