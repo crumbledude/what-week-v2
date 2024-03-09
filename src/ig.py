@@ -1,7 +1,7 @@
 import os
 import requests
 
-def create_instagram_container(image_url: str, caption: str, tags: dict) -> str:
+def create_instagram_container(image_url: str, caption: str, tags: list) -> str:
     ig_user_id = os.environ['IG_USER_ID']
     access_token = os.environ['IG_ACCESS_TOKEN']
 
@@ -12,6 +12,7 @@ def create_instagram_container(image_url: str, caption: str, tags: dict) -> str:
     }
     
     if tags:
+        print("Tagging user")
         params["user_tags"] = tags
     
     r = requests.post(
@@ -22,12 +23,12 @@ def create_instagram_container(image_url: str, caption: str, tags: dict) -> str:
 
     if r.status_code == 200:
         print(f"Uploaded {image_url} to instagram successfully")
-        
         return r.json()['id']
         
     else:
         print(f"Failed to upload {image_url} to instagram, Status code: {r.status_code}")
         print(r.json())
+        raise RuntimeError(f"Failed to upload {image_url} to instagram, Status code: {r.status_code}")
         
 def post_instagram_container(img_id):
     ig_user_id = os.environ['IG_USER_ID']
@@ -48,3 +49,4 @@ def post_instagram_container(img_id):
     else:
         print(f"Failed to publish {img_id} to instagram, Status code: {r.status_code}")
         print(r.json())
+        raise RuntimeError(f"Failed to publish {img_id} to instagram, Status code: {r.status_code}")
