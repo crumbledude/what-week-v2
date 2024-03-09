@@ -21,8 +21,10 @@ def main():
     image_bytes = download_image(image_json["urls"]["regular"])
     
     caption = f"On Monday it will be week {calculate_week_no()} at THS. The image is by {author} on Unsplash."
+    
+    #include elliot's instagram handle if the image is by him
     if author == "Elliot Crane":
-        caption[:-1] + " and @elliot_photography07 on instagram."     
+        caption = caption[:-1] + " and @elliot_photography07 on instagram."     
     
     lovely_art(image_bytes, week_no, author)
     
