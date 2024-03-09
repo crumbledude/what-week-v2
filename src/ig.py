@@ -1,24 +1,21 @@
 import os
 import requests
+import json
 
-def create_instagram_container(image_url: str, caption: str, tags: list) -> str:
+def create_instagram_container(image_url: str, caption: str) -> str:
     ig_user_id = os.environ['IG_USER_ID']
     access_token = os.environ['IG_ACCESS_TOKEN']
 
-    params={
-        "image_url": image_url,
-        "caption": caption,
-        "access_token": access_token
-    }
     
-    if tags:
-        print("Tagging user")
-        params["user_tags"] = tags
     
     r = requests.post(
         f"https://graph.facebook.com/v19.0/{ig_user_id}/media",
         timeout=60,
-        params=params
+        params={
+        "image_url": image_url,
+        "caption": caption,
+        "access_token": access_token
+    }
     )
 
     if r.status_code == 200:

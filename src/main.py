@@ -21,21 +21,15 @@ def main():
     image_bytes = download_image(image_json["urls"]["regular"])
     
     caption = f"On Monday it will be week {calculate_week_no()} at THS. The image is by {author} on Unsplash."
+    if author == "Elliot Crane":
+        caption[:-1] + " and @elliot_photography07 on instagram."     
     
     lovely_art(image_bytes, week_no, author)
     
     image_url = imgbb.upload("img.png")
     print(image_url)
-    
-    #tag Elliot if it's his image
-    if author == "Elliot Crane":
-        tags = [{"username": "elliot_photography07",
-                "x": 0.48,
-                "y": 0.96}]
-    else:
-        tags = False
 
-    image_ID = ig.create_instagram_container(image_url, caption, tags)
+    image_ID = ig.create_instagram_container(image_url, caption)
     ig.post_instagram_container(image_ID) 
 
 def download_image(url) -> bytes:
