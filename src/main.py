@@ -29,9 +29,9 @@ def main():
     
     #tag Elliot if it's his image
     if author == "Elliot Crane":
-        tags = [{"usernames": "elliot_photography07",
+        tags = {"username": "elliot_photography07",
                 "x": 0.48,
-                "y": 0.96}]
+                "y": 0.96}
     else:
         tags = False
 

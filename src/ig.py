@@ -1,7 +1,7 @@
 import os
 import requests
 
-def create_instagram_container(image_url: str, caption: str, tags: list) -> str:
+def create_instagram_container(image_url: str, caption: str, tags: dict) -> str:
     ig_user_id = os.environ['IG_USER_ID']
     access_token = os.environ['IG_ACCESS_TOKEN']
 
