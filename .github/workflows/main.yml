@@ -23,6 +23,14 @@ jobs:
                 python -m pip install --upgrade pip
                 pip install -r requirements.txt
 
+            - name: Download used images file
+              uses: dawidd6/action-download-artifact@v3
+              with:
+                name: used_images
+                path: ./
+                if_no_artifact_found: warn
+                search_artifacts: true
+
             - name: Run Script
               run: python ./src/main.py
               env:
@@ -30,4 +38,10 @@ jobs:
                 IG_USER_ID: ${{ secrets.IG_USER_ID }}
                 IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
                 UNSPLASH_ACCESS_TOKEN: ${{ secrets.UNSPLASH_ACCESS_TOKEN }}
+
+            - name: Upload used images log file
+              uses: actions/upload-artifact@v4
+              with:
+                name: used_images
+                path: ./used_images.txt
     

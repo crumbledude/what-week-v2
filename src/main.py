@@ -2,7 +2,6 @@ import os
 from io import BytesIO
 import json
 import requests
-from random import choice
 
 from datetime import datetime, timedelta
 from unicodedata import normalize
@@ -21,7 +20,6 @@ def main():
     
     image_bytes = download_image(image_json["urls"]["regular"])
     
-    
     caption = f"On Monday it will be week {calculate_week_no()} at THS. The image is by {author} on Unsplash."
     
     lovely_art(image_bytes, week_no, author)
@@ -30,7 +28,6 @@ def main():
     print(image_url)
     
     #tag Elliot if it's his image
-    
     if author == "Elliot Crane":
         tags = [{"usernames": "elliot_photography07",
                 "x": 0.48,
