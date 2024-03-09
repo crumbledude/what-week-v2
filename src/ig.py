@@ -1,7 +1,7 @@
 import os
 import requests
 
-def create_instagram_container(image_url: str, caption: str, tags: dict) -> str:
+def create_instagram_container(image_url: str, caption: str, tags: list) -> str:
     ig_user_id = os.environ['IG_USER_ID']
     access_token = os.environ['IG_ACCESS_TOKEN']
 
@@ -12,7 +12,7 @@ def create_instagram_container(image_url: str, caption: str, tags: dict) -> str:
     }
     
     if tags:
-        params["tags"] = tags
+        params["user_tags"] = tags
     
     r = requests.post(
         f"https://graph.facebook.com/v19.0/{ig_user_id}/media",
