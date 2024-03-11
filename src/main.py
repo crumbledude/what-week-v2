@@ -41,8 +41,7 @@ def download_image(url) -> bytes:
 
 def calculate_week_no()-> str:
     now = datetime.now()
-    #ensure days is adjusted back to 3 in production
-    then = now + timedelta(days = 2)
+    then = now + timedelta(days = 3)
     then = then.strftime("%d-%m-%y")
     with open("./weeks.json", "r") as f:
         weekdict = json.load(f)
