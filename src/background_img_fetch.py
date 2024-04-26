@@ -33,7 +33,7 @@ def get_random_image():
 
     try:
         res_json = response.json()
-        print(f"Successfully got image - {img["links"]["html"]} - from Unsplash API.")
+        print(f"Successfully got image - {res_json["links"]["html"]} - from Unsplash API.")
 
     except json.decoder.JSONDecodeError:
         print("Unsplash API response was not valid JSON.")
