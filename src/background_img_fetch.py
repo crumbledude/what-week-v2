@@ -33,7 +33,7 @@ def get_random_image():
 
     try:
         res_json = response.json()
-        print("Successfully got image from Unsplash API.")
+        print(f"Successfully got image - {img["links"]["html"]} - from Unsplash API.")
 
     except json.decoder.JSONDecodeError:
         print("Unsplash API response was not valid JSON.")
@@ -70,6 +70,7 @@ def get_elliot_background() -> dict:
     already_used_images = get_used_images()
     for img in res_json:
         if img["id"] not in already_used_images:
+            print(f'Using image {img["links"]["html"]} from unsplash')
             add_used_image(img["id"])
             return img
         
