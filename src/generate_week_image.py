@@ -19,7 +19,7 @@ def calculate_week_no() -> str:
         return weekdict[then]
     except KeyError:
         print("Week not found in weeks.json, must be holiday. Exiting.")
-        exit()
+        return None
 
 
 def download_image(url) -> BytesIO:
@@ -30,6 +30,9 @@ def download_image(url) -> BytesIO:
 def main():
     print("Generating image...")
     week_no = calculate_week_no()
+
+    if week_no is None:
+        raise ValueError("Week number not found in weeks.json, must be holiday.")
 
     image_json = background_img_fetch.get_image()
     author = image_json["user"]["name"]
