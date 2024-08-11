@@ -1,3 +1,5 @@
 used_images.txt
 __pycache__/
+.venv
+data.json
 img.png
