@@ -75,7 +75,7 @@ if __name__ == "__main__":
     post_data = request_data()
 
     container_id = create_instagram_container(
-        post_data["image_url"], post_data["caption"]
+        IMG_URL, post_data["caption"]
     )
 
     time.sleep(30)
