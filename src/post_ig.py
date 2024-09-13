@@ -4,6 +4,7 @@ import time
 import requests
 
 IMG_URL = "https://what-week.zoobdude.com/img.png"
+DATA_URL = "https://what-week.zoobdude.com/data.json"
 
 
 def create_instagram_container(image_url: str, caption: str) -> str:
@@ -56,7 +57,7 @@ def post_instagram_container(img_id):
 
 
 def request_data():
-    r = requests.get(IMG_URL, timeout=60)
+    r = requests.get(DATA_URL, timeout=60)
 
     if r.status_code != 200:
         print(f"Failed to fetch data from {IMG_URL}, Status code: {r.status_code}")
