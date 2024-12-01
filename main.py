@@ -9,7 +9,7 @@ from unicodedata import normalize
 
 def main():
     now = datetime.now()
-    then = now + timedelta(days = 3)
+    then = now + timedelta(days = 1)
     then = then.strftime("%d-%m-%y")
     with open("./weeks.json", "r") as f:
         weekdict = json.load(f)
